@@ -10,8 +10,50 @@
     <title>퇴근타이머</title>
 </head>
 <body>
-    
 
+    <header>
+        <h1>퇴근 타이머</h1>
+    </header>
+
+    <main>
+        <article class="time">
+            <h2>현재시각</h2>
+            <div class="current_time">
+                08:10
+            </div>
+        </article>
+
+        <article class="inputs">
+            <p>내 퇴근 시간은</p>
+            <input type="text" id="time" placeholder="예)18">
+            <p>시</p>
+            <input type="text" id="minute" placeholder="예)00">
+            <p>분 이다.</p>
+        </article>
+
+        <article class="start">
+            <button class="start_btn">퇴근시켜줘</button>
+        </article>
+
+        <article class="loading">
+            <img src="img/loading.png" alt="로딩 중">
+        </article>
+        
+        <div id="modal">
+            <div class="modal_wrap">
+                <h2>퇴근까지</h2>
+                <div class="gohome_time">
+                    05:42:08
+                </div>
+                <button class="share_btn">내 퇴근시간 공유하기</button>
+                <button class="close_btn">닫기</button>
+            </div>
+        </div>
+    </main>
     
+    <footer>
+        <p>김윤정 만듬</p>
+        <a href="https://github.com/codekyz">codekyz</a>
+    </footer>
 </body>
 </html>
