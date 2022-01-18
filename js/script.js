@@ -1,5 +1,6 @@
 const startButton = document.querySelector('.start_btn');
-const shareButton = document.querySelector('.share_btn');
+const shareButton1 = document.querySelector('.share_btn1');
+const shareButton2 = document.querySelector('.share_btn2');
 const closeButton = document.querySelector('.close_btn');
 
 const modal = document.querySelector('.modal_wrap');
@@ -87,11 +88,24 @@ window.onclick = function (event) {
 
 showClock();
 
-function copyTime() {
+function copyTime1() {
     let tmp = document.createElement('input');
 
     document.body.appendChild(tmp);
     tmp.value = '나 퇴근까지 '+gohomeTime.innerText+' 남았어';
+
+    tmp.select();
+    document.execCommand("copy");
+    document.body.removeChild(tmp);
+
+    alert('퇴근시간이 복사되었습니다.')
+}
+    
+function copyTime2() {
+    let tmp = document.createElement('input');
+
+    document.body.appendChild(tmp);
+    tmp.value = '저 퇴근까지 '+gohomeTime.innerText+' 남았습니다.';
     tmp.select();
     document.execCommand("copy");
     document.body.removeChild(tmp);
@@ -102,6 +116,7 @@ function copyTime() {
 
 
 startButton.addEventListener('click', openModal);
-shareButton.addEventListener('click', copyTime);
+shareButton1.addEventListener('click', copyTime1);
+shareButton2.addEventListener('click', copyTime2);
 closeButton.addEventListener('click', closeModal);
 
