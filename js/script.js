@@ -11,12 +11,18 @@ const userMinute = document.querySelector('#minute');
 const currentTime = document.querySelector('.current_time');
 const gohomeTime = document.querySelector('.gohome_time');
 
-
+// 1초마다 현재 시각 갱신
 function showClock() {
     getClock();
     setInterval(getClock, 1000);
 }
 
+// 1초마다 남은 시간 갱신
+function startTimer() {
+    setInterval(calculator, 1000);
+}
+
+// 현재 시각을 출력하는 함수
 function getClock() {
     let date1 = new Date();
     let hours = date1.getHours();
@@ -26,6 +32,7 @@ function getClock() {
     currentTime.innerHTML = `${hours < 10 ? `0${hours}` : hours}:${minutes <10 ? `0${minutes}` : minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
 }
 
+// 퇴근 시간 - 현재 시간으로 남은 시간을 계산하는 함수
 function calculator() {
     let date2 = new Date;
     let date3 = new Date;
@@ -33,8 +40,11 @@ function calculator() {
     let currTime = date2.getTime();
 
     if (userTime < currTime) {
-        alert('더 큰 시간을 입력해주세요.')
-        return false;
+        if (modal.style.display === 'none') {
+            alert('현재 시간 이후 시간을 입력해주세요.');
+        } else {
+            document.querySelector('#modal h2').innerHTML = `♥퇴근완료♥`;
+        }
     } else {
         let diffMsec = userTime - currTime;
         let diffSec = parseInt(diffMsec / 1000)
@@ -46,9 +56,7 @@ function calculator() {
         let gohomeHours = diffHour;
 
         gohomeTime.innerHTML = `
-            ${gohomeHours < 10 ? `0${gohomeHours}` : gohomeHours}:
-            ${gohomeMinutes <10 ? `0${gohomeMinutes}` : gohomeMinutes}:
-            ${gohomeSeconds <10 ? `0${gohomeSeconds}` : gohomeSeconds}
+            ${gohomeHours < 10 ? `0${gohomeHours}` : gohomeHours}:${gohomeMinutes <10 ? `0${gohomeMinutes}` : gohomeMinutes}:${gohomeSeconds <10 ? `0${gohomeSeconds}` : gohomeSeconds}
         `;
         return true;
     }
@@ -61,11 +69,13 @@ function openModal() {
             loading.style.display = 'none';
             modal.style.display = 'flex';
         }, 2000);
+        startTimer();
     }
 }
 
 function closeModal() {
     modal.style.display = 'none';
+    window.location.reload();
 }
 
 showClock();
