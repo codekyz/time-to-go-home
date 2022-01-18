@@ -5,7 +5,7 @@ const closeButton = document.querySelector('.close_btn');
 const modal = document.querySelector('.modal_wrap');
 const loading = document.querySelector('.loading');
 
-const userTime = document.querySelector('#time');
+const userHour = document.querySelector('#time');
 const userMinute = document.querySelector('#minute');
 
 const currentTime = document.querySelector('.current_time');
@@ -29,29 +29,39 @@ function getClock() {
 function calculator() {
     let date2 = new Date;
     let date3 = new Date;
-    let diffMsec = date3.setHours(Number(userTime.value), Number(userMinute.value), 0, 0) - date2.getTime();
-    let diffSec = parseInt(diffMsec / 1000)
-    let diffMin = parseInt(diffSec / 60);
-    let diffHour = parseInt(diffMin / 60);
+    let userTime = date3.setHours(Number(userHour.value), Number(userMinute.value), 0, 0);
+    let currTime = date2.getTime();
 
-    let gohomeSeconds = parseInt(diffSec % 60);
-    let gohomeMinutes = parseInt(diffMin % 60);
-    let gohomeHours = diffHour;
+    if (userTime < currTime) {
+        alert('더 큰 시간을 입력해주세요.')
+        return false;
+    } else {
+        let diffMsec = userTime - currTime;
+        let diffSec = parseInt(diffMsec / 1000)
+        let diffMin = parseInt(diffSec / 60);
+        let diffHour = parseInt(diffMin / 60);
 
-    gohomeTime.innerHTML = `
-        ${gohomeHours < 10 ? `0${gohomeHours}` : gohomeHours} : 
-        ${gohomeMinutes <10 ? `0${gohomeMinutes}` : gohomeMinutes} : 
-        ${gohomeSeconds <10 ? `0${gohomeSeconds}` : gohomeSeconds}
-    `;
+        let gohomeSeconds = parseInt(diffSec % 60);
+        let gohomeMinutes = parseInt(diffMin % 60);
+        let gohomeHours = diffHour;
+
+        gohomeTime.innerHTML = `
+            ${gohomeHours < 10 ? `0${gohomeHours}` : gohomeHours}:
+            ${gohomeMinutes <10 ? `0${gohomeMinutes}` : gohomeMinutes}:
+            ${gohomeSeconds <10 ? `0${gohomeSeconds}` : gohomeSeconds}
+        `;
+        return true;
+    }
 }
 
 function openModal() {
-    calculator();
-    loading.style.display = 'flex';
-    setTimeout(function () {
-        loading.style.display = 'none';
-        modal.style.display = 'flex';
-    }, 2000);
+    if(calculator()) {
+        loading.style.display = 'flex';
+        setTimeout(function () {
+            loading.style.display = 'none';
+            modal.style.display = 'flex';
+        }, 2000);
+    }
 }
 
 function closeModal() {
