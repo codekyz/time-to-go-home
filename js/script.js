@@ -79,14 +79,29 @@ function closeModal() {
     window.location.reload();
 }
 
+window.onclick = function (event) {
+    if(event.target == modal) {
+        closeModal();
+    }
+}
+
 showClock();
 
-// function copyTime() {
-    
-// }
+function copyTime() {
+    let tmp = document.createElement('input');
+
+    document.body.appendChild(tmp);
+    tmp.value = '나 퇴근까지 '+gohomeTime.innerText+' 남았어';
+    tmp.select();
+    document.execCommand("copy");
+    document.body.removeChild(tmp);
+
+    alert('퇴근시간이 복사되었습니다.')
+
+}
 
 
 startButton.addEventListener('click', openModal);
-// shareButton.addEventListener('click', copyTime);
+shareButton.addEventListener('click', copyTime);
 closeButton.addEventListener('click', closeModal);
 
