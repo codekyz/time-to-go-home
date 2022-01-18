@@ -65,6 +65,7 @@ function calculator() {
 function openModal() {
     if(calculator()) {
         loading.style.display = 'flex';
+        document.querySelector('#modal h2').innerHTML = `퇴근까지`;
         setTimeout(function () {
             loading.style.display = 'none';
             modal.style.display = 'flex';
