@@ -30,10 +30,19 @@ function calculator() {
     let date2 = new Date;
     let date3 = new Date;
     let diffMsec = date3.setHours(Number(userTime.value), Number(userMinute.value), 0, 0) - date2.getTime();
-    let diffMin = parseInt(diffMsec / 1000 / 60);
-    let diffHour = parseInt(diffMin / 1000 / 60 / 60);
+    let diffSec = parseInt(diffMsec / 1000)
+    let diffMin = parseInt(diffSec / 60);
+    let diffHour = parseInt(diffMin / 60);
 
-    gohomeTime.innerHTML = `${diffHour < 10 ? `0${diffHour}` : diffHour}:${diffMin <10 ? `0${diffMin}` : diffMin}`;
+    let gohomeSeconds = parseInt(diffSec % 60);
+    let gohomeMinutes = parseInt(diffMin % 60);
+    let gohomeHours = diffHour;
+
+    gohomeTime.innerHTML = `
+        ${gohomeHours < 10 ? `0${gohomeHours}` : gohomeHours} : 
+        ${gohomeMinutes <10 ? `0${gohomeMinutes}` : gohomeMinutes} : 
+        ${gohomeSeconds <10 ? `0${gohomeSeconds}` : gohomeSeconds}
+    `;
 }
 
 function openModal() {
