@@ -40,10 +40,10 @@ function calculator() {
     let currTime = date2.getTime();
 
     if (userTime < currTime) {
-        if (modal.style.display === 'none') {
-            alert('현재 시간 이후 시간을 입력해주세요.');
-        } else {
+        if (modal.style.display === 'flex') {
             document.querySelector('#modal h2').innerHTML = `♥퇴근완료♥`;
+        } else {
+            alert('현재 이후 시간을 입력해주세요.');
         }
     } else {
         let diffMsec = userTime - currTime;
