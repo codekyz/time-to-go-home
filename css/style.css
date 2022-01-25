@@ -79,12 +79,31 @@ main {
     font-size: 20px;
 }
 
+.time_input {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.minute_input {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}
+
 .inputs input {
     padding: 10px 10px;
     margin-left: 10px;
     margin-right: 3px;
     border-radius: 8px;
     border: none;
+}
+
+@media screen and (max-width: 800px) {
+    .inputs {
+        display: flex;
+        flex-direction: column;
+    }
 }
 
 /* start */
@@ -135,6 +154,13 @@ main {
     font-size: 70px;
     line-height: 1.5;
     color: #4F3E66;
+}
+
+@media screen and (max-width: 800px) {
+    #modal .modal_wrap {
+        width: 400px;
+        height: 400px;
+    }
 }
 
 footer {

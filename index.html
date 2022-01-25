@@ -16,32 +16,36 @@
     </header>
 
     <main>
-        <article class="time">
+        <section class="time">
             <h2>현재시각</h2>
             <div class="current_time"></div>
-        </article>
+        </section>
 
-        <article class="inputs">
+        <section class="inputs">
             <p>내 퇴근 시간은</p>
-            <input type="text" id="time" placeholder="예)18">
-            <p>시</p>
-            <input type="text" id="minute" placeholder="예)00">
-            <p>분 이다.</p>
-        </article>
+            <div class="time_input">
+                <input type="text" id="time" placeholder="예)18">
+                <p>시</p>
+            </div>
+            <div class="minute_input">
+                <input type="text" id="minute" placeholder="예)00">
+                <p>분 이다.</p>
+            </div>
+        </section>
 
-        <article class="start">
+        <section class="start">
             <button class="start_btn">퇴근시켜줘</button>
-        </article>
+        </section>
 
-        <article class="loading">
+        <section class="loading">
             <img src="img/loading.png" alt="로딩 중">
-        </article>
+        </section>
         
         <div id="modal">
             <div class="modal_wrap">
                 <h2>퇴근까지</h2>
                 <div class="gohome_time"></div>
-                <button class="share_btn">내 퇴근시간 친구에게 공유하기</button>
+                <button class="share_btn">내 퇴근시간<br>친구에게 공유하기</button>
                 <button class="close_btn">닫기</button>
             </div>
         </div>
