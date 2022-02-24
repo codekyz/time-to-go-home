@@ -88,7 +88,7 @@ const copyTime = () => {
     let tmp = document.createElement('input');
 
     document.body.appendChild(tmp);
-    tmp.value = '나 퇴근까지 '+gohomeTime.innerText+' 남았어';
+    tmp.value = `나 퇴근까지 ${gohomeTime.innerText} 남았어`;
 
     tmp.select();
     document.execCommand("copy");
